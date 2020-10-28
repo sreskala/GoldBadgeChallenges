@@ -20,6 +20,10 @@ namespace Challenge1.KomodoCafe.UnitTests
 
             //checks if meal number is created correctly
             Assert.AreEqual(1, komodoMenu1.MealNumber);
+
+            //quick test
+            Console.WriteLine($"|ClaimID| {"|Type|",10} {"|Description|", 10} {"|Amount|",15} {"|DateOfAccident|", 15}" +
+                $"{"|DateOfClaim|",15} {"|IsValid|", 10}");
         }
     }
 }
