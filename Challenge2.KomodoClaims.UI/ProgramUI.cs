@@ -126,7 +126,7 @@ namespace Challenge2.KomodoClaims.UI
             Console.WriteLine("2. Home");
             Console.WriteLine("3. Theft");
 
-            int claimInt = 1;
+            int claimInt = Int32.Parse(Console.ReadLine());
 
             bool incorrect = true;
             while(incorrect)

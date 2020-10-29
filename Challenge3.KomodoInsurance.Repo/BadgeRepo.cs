@@ -15,9 +15,18 @@ namespace Challenge3.KomodoInsurance.Repo
         //Create new badge
         public bool CreateNewBadge(Badge badge)
         {
-            _repo.Add(badge.BadgeId, badge.Doors);
+            if (_repo.ContainsKey(badge.BadgeId))
+            {
+                Console.WriteLine("ID already exists. Failed to add Badge.");
+            }
+            else
+            {
+                _repo.Add(badge.BadgeId, badge.Doors);
+                Console.WriteLine("Badge added successfully.");
+            }
 
-            if(_repo.ContainsKey(badge.BadgeId))
+
+            if (_repo.ContainsKey(badge.BadgeId))
             {
                 return true;
             } else
@@ -90,8 +99,16 @@ namespace Challenge3.KomodoInsurance.Repo
                 string doorsList = DisplayDoors(doors);
 
                 Console.WriteLine("Badge#       Door Access");
-                Console.WriteLine($"{id}            {doorsList}");
+                Console.WriteLine($"{id}            {doorsList}\n");
             }
+        }
+
+        public void ShowBadge(int id)
+        {
+            List<Door> doors = _repo[id];
+            string doorsList = DisplayDoors(doors);
+
+            Console.WriteLine($"{id} has access to door(s) {doorsList}.");
         }
 
         private string DisplayDoors(List<Door> doors)
