@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge2.KomodoClaims.UI"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge2.KomodoClaims.UnitTests", "Challenge2.KomodoClaims.UnitTests\Challenge2.KomodoClaims.UnitTests.csproj", "{2FBED0F5-0AAC-4CAE-A6AC-59888CD95E4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge3.KomodoInsurance.Repo", "Challenge3.KomodoInsurance.Repo\Challenge3.KomodoInsurance.Repo.csproj", "{19BD32CB-C5F4-4ECA-A4D6-34D5E5C169E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge3.KomodoInsurance.UnitTests", "Challenge3.KomodoInsurance.UnitTests\Challenge3.KomodoInsurance.UnitTests.csproj", "{8C3992F9-866C-4BB5-BD1A-5CCBFE57393B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{2FBED0F5-0AAC-4CAE-A6AC-59888CD95E4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FBED0F5-0AAC-4CAE-A6AC-59888CD95E4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FBED0F5-0AAC-4CAE-A6AC-59888CD95E4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19BD32CB-C5F4-4ECA-A4D6-34D5E5C169E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19BD32CB-C5F4-4ECA-A4D6-34D5E5C169E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19BD32CB-C5F4-4ECA-A4D6-34D5E5C169E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19BD32CB-C5F4-4ECA-A4D6-34D5E5C169E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C3992F9-866C-4BB5-BD1A-5CCBFE57393B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C3992F9-866C-4BB5-BD1A-5CCBFE57393B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C3992F9-866C-4BB5-BD1A-5CCBFE57393B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C3992F9-866C-4BB5-BD1A-5CCBFE57393B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
