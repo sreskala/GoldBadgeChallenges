@@ -51,20 +51,28 @@ namespace Challenge2.KomodoClaims.UI
                 {
                     case 1:
                         //see all claims
+                        Console.Clear();
                         SeeAllClaims();
                         break;
                     case 2:
                         //take care of next claim
+                        Console.Clear();
                         NextClaim();
                         break;
                     case 3:
                         //enter a new claim
+                        Console.Clear();
+                        EnterNewClaim();
                         break;
                     case 4:
                         continueToRun = false;
                         break;
                     default:
+                        Console.Clear();
                         Console.WriteLine("Invalid choice.");
+                        Console.WriteLine("Press any key to try again.");
+                        Console.ReadKey();
+                        Console.Clear();
                         break;
                 }
             }
@@ -110,7 +118,63 @@ namespace Challenge2.KomodoClaims.UI
 
         public void EnterNewClaim()
         {
+            Console.WriteLine("Enter the claim ID: ");
+            int claimId = Int32.Parse(Console.ReadLine());
 
+            Console.WriteLine("Pick a claim type: ");
+            Console.WriteLine("1. Car");
+            Console.WriteLine("2. Home");
+            Console.WriteLine("3. Theft");
+
+            int claimInt = 1;
+
+            bool incorrect = true;
+            while(incorrect)
+            {
+                claimInt = Int32.Parse(Console.ReadLine());
+                if(claimInt > 3)
+                {
+                    Console.WriteLine("Not a valid choice please try again.");
+                } else
+                {
+                    incorrect = false;
+                }
+            }
+
+            ClaimType claimType = (ClaimType)claimInt;
+
+            Console.WriteLine("Enter a claim description: ");
+            string desc = Console.ReadLine();
+
+            Console.WriteLine("Enter amount of damage : ");
+            double claimAmount = Double.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter date of accident (mm/dd/yyyy): ");
+            DateTime accidentDate = DateTime.Parse(Console.ReadLine());
+
+            Console.WriteLine("Date of claim (mm/dd/yyyy): ");
+            DateTime claimDate = DateTime.Parse(Console.ReadLine());
+
+            KomodoClaim claim = new KomodoClaim(claimId, accidentDate, claimDate, claimType, desc, claimAmount);
+
+            bool wasCreated = _repo.NewClaim(claim);
+
+            if(wasCreated)
+            {
+                Console.WriteLine("Claim successfully created:");
+                bool valid = claim.IsValid();
+                if (valid)
+                {
+                    Console.WriteLine("Claim is valid.");
+                }
+                else
+                {
+                    Console.WriteLine("Claim is not valid.");
+                }
+            } else
+            {
+                Console.WriteLine("Oops. Something went wrong.");
+            }
         }
 
         public void DisplayClaimItem(KomodoClaim claim)
