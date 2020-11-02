@@ -45,26 +45,26 @@ namespace Challenge2.KomodoClaims.UI
                 Console.WriteLine("3. Enter a new claim");
                 Console.WriteLine("4. Exit");
 
-                int choice = Int32.Parse(Console.ReadLine());
+                string choice = Console.ReadLine();
 
                 switch (choice)
                 {
-                    case 1:
+                    case "1":
                         //see all claims
                         Console.Clear();
                         SeeAllClaims();
                         break;
-                    case 2:
+                    case "2":
                         //take care of next claim
                         Console.Clear();
                         NextClaim();
                         break;
-                    case 3:
+                    case "3":
                         //enter a new claim
                         Console.Clear();
                         EnterNewClaim();
                         break;
-                    case 4:
+                    case "4":
                         continueToRun = false;
                         break;
                     default:
@@ -126,22 +126,26 @@ namespace Challenge2.KomodoClaims.UI
             Console.WriteLine("2. Home");
             Console.WriteLine("3. Theft");
 
-            int claimInt = Int32.Parse(Console.ReadLine());
+            string claimInt = "";
 
             bool incorrect = true;
             while(incorrect)
             {
-                claimInt = Int32.Parse(Console.ReadLine());
-                if(claimInt > 3)
-                {
-                    Console.WriteLine("Not a valid choice please try again.");
-                } else
+                claimInt = Console.ReadLine();
+                int a;
+
+                bool res = Int32.TryParse(claimInt, out a);
+
+                if(res && Int32.Parse(claimInt) <= 3)
                 {
                     incorrect = false;
+                } else
+                {
+                    Console.WriteLine("Not a valid choice, please try again.");
                 }
             }
 
-            ClaimType claimType = (ClaimType)claimInt;
+            ClaimType claimType = (ClaimType)Int32.Parse(claimInt);
 
             Console.WriteLine("Enter a claim description: ");
             string desc = Console.ReadLine();

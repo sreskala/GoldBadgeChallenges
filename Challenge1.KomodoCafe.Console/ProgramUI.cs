@@ -101,7 +101,7 @@ namespace Challenge1.KomodoCafe.UI
         {
             List<KomodoMenu> menuItems = _repo.GetMenuItems();
 
-            foreach(KomodoMenu item in menuItems)
+            foreach (KomodoMenu item in menuItems)
             {
                 DisplayMenuItem(item);
             }
@@ -116,15 +116,16 @@ namespace Challenge1.KomodoCafe.UI
             int menuNum = Int32.Parse(Console.ReadLine());
 
             KomodoMenu item = _repo.GetMenuItemByMealNumber(menuNum);
-            if(item != null)
+            if (item != null)
             {
                 DisplayMenuItem(item);
-            } else
+            }
+            else
             {
                 Console.WriteLine("Meal number does not exist.");
             }
 
-            
+
             PressKey();
         }
 
@@ -134,13 +135,14 @@ namespace Challenge1.KomodoCafe.UI
             int mealNum = 0;
 
             bool exists = true;
-            while(exists)
+            while (exists)
             {
                 mealNum = Int32.Parse(Console.ReadLine());
                 if (_repo.GetMenuItemByMealNumber(mealNum) != null)
                 {
                     Console.WriteLine("Meal number already exists, please enter a different number.");
-                } else
+                }
+                else
                 {
                     exists = false;
                 }
@@ -162,10 +164,11 @@ namespace Challenge1.KomodoCafe.UI
 
             bool wasAdded = _repo.AddMenuItem(newMenu);
 
-            if(wasAdded)
+            if (wasAdded)
             {
                 Console.WriteLine("New item added to menu list.");
-            } else
+            }
+            else
             {
                 Console.WriteLine("Oops. Something went wrong.");
 
@@ -181,10 +184,11 @@ namespace Challenge1.KomodoCafe.UI
 
             bool wasDeleted = _repo.DeleteMenuItem(mealNum);
 
-            if(wasDeleted)
+            if (wasDeleted)
             {
                 Console.WriteLine("Item successfully deleted.");
-            } else
+            }
+            else
             {
                 Console.WriteLine("Oops. Something went wrong");
             }
@@ -194,10 +198,28 @@ namespace Challenge1.KomodoCafe.UI
 
         public void UpdateMenuItem()
         {
-            Console.WriteLine("Please enter meal number for item to update: ");
-            int mealNum = Int32.Parse(Console.ReadLine());
 
-            KomodoMenu oldItem = _repo.GetMenuItemByMealNumber(mealNum);
+            int mealNum = 0;
+            KomodoMenu oldItem = null;
+            bool exists = false;
+
+            while(!exists)
+            {
+                Console.WriteLine("Please enter meal number for item to update: ");
+                mealNum = Int32.Parse(Console.ReadLine());
+
+                oldItem = _repo.GetMenuItemByMealNumber(mealNum);
+
+                if (oldItem == null)
+                {
+                    Console.WriteLine("Item not in database.");
+                } else
+                {
+                    exists = true;
+                }
+            }
+            ;
+
 
             Console.WriteLine($"Enter new description for {oldItem.MealName}: ");
             string desc = Console.ReadLine();
@@ -210,12 +232,13 @@ namespace Challenge1.KomodoCafe.UI
 
             KomodoMenu newItem = new KomodoMenu(mealNum, oldItem.MealName, desc, ingredients, price);
 
-           bool wasUpdated = _repo.UpdateMenuItem(mealNum, newItem);
+            bool wasUpdated = _repo.UpdateMenuItem(mealNum, newItem);
 
-            if(wasUpdated)
+            if (wasUpdated)
             {
                 Console.WriteLine("Menu item successfully updated!");
-            } else
+            }
+            else
             {
                 Console.WriteLine("Oops. Something went wrong!");
             }
@@ -243,7 +266,7 @@ namespace Challenge1.KomodoCafe.UI
         public string ListIngredients(List<string> ingredients)
         {
             string ings = "";
-            foreach(string ingredient in ingredients)
+            foreach (string ingredient in ingredients)
             {
                 ings += "," + ingredient;
             }
