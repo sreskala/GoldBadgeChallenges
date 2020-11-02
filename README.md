@@ -46,3 +46,16 @@ bool wasAdded = _repo.AddMenuItem(menu); //Should return true
 ---------
 
 ## Challenge 2: Komodo Claims
+Komodo has a bug in its software and needs some new code.
+Komodo allows an insurance claim to be made up to 30 days after an incident took place. If the claim is not in the proper time limit, it is not valid.
+
+KomodoClaim Class
+| Property/Method | Description |
+| :---------------: | ----------- |
+| ClaimId | integer number |
+| ClaimType | enum with 3 choices { Car, Home, Theft } |
+| Description | string of description |
+| ClaimAmount | double number |
+| DateOfIncident | DateTime date of incident |
+| DateOfClaim | DateTime date of claim |
+| IsValid() | Method to determine if claim is valid: if the TimeSpan between DateOfIncident and DateOfClaim is < 30 days then will return true |
